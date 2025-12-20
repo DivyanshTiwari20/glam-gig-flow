@@ -366,6 +366,7 @@ export type Database = {
           phone: string | null
           portfolio_images: string[] | null
           price_range: string | null
+          profile_template: string | null
           service_pricing: Json | null
           services: string | null
           social_accounts: string | null
@@ -387,6 +388,7 @@ export type Database = {
           phone?: string | null
           portfolio_images?: string[] | null
           price_range?: string | null
+          profile_template?: string | null
           service_pricing?: Json | null
           services?: string | null
           social_accounts?: string | null
@@ -408,6 +410,7 @@ export type Database = {
           phone?: string | null
           portfolio_images?: string[] | null
           price_range?: string | null
+          profile_template?: string | null
           service_pricing?: Json | null
           services?: string | null
           social_accounts?: string | null
