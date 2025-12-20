@@ -559,10 +559,7 @@ export type Database = {
       }
     }
     Functions: {
-      can_book_appointment: {
-        Args: { provider_id: string }
-        Returns: boolean
-      }
+      can_book_appointment: { Args: { provider_id: string }; Returns: boolean }
       get_contact_for_booking: {
         Args: { provider_id: string }
         Returns: {
