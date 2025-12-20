@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useState, useRef, useEffect } from "react";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
-import { Menu, X, Sparkles, User, Settings, LogOut, UserCircle, ExternalLink } from "lucide-react";
+import { Menu, X, Sparkles, User, Settings, LogOut, UserCircle, ExternalLink, Edit } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate, useLocation } from "react-router-dom";
 import { NotificationBell } from "@/components/notifications/NotificationBell";
@@ -65,6 +65,9 @@ const Navbar = () => {
     switch (action) {
       case "profile":
         navigate("/profile");
+        break;
+      case "edit-profile":
+        navigate("/profile-editor");
         break;
       case "public-profile":
         if (userId) {
@@ -176,13 +179,13 @@ const Navbar = () => {
                   </div>
 
                   <div className="py-2">
-                    {/* <button
-                      onClick={() => handleProfileAction("profile")}
+                    <button
+                      onClick={() => handleProfileAction("edit-profile")}
                       className="w-full flex items-center gap-3 px-3 py-2 text-sm hover:bg-muted transition-colors"
                     >
-                      <UserCircle className="h-4 w-4" />
-                      Profile
-                    </button> */}
+                      <Edit className="h-4 w-4" />
+                      Edit Public Profile
+                    </button>
                     <button
                       onClick={() => handleProfileAction("public-profile")}
                       className="w-full flex items-center gap-3 px-3 py-2 text-sm hover:bg-muted transition-colors"
