@@ -583,6 +583,7 @@ export type Database = {
           id: string
           portfolio_images: string[]
           price_range: string
+          profile_template: string
           services: string
           social_accounts: string
         }[]
