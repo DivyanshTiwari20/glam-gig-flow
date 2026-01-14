@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User, Bell, Lock, X, KeyRound , IndianRupee} from 'lucide-react';
+import { User, Bell, Lock, X, KeyRound, IndianRupee } from 'lucide-react';
 import UpdatePasswordForm from '@/components/settings/UpdatePasswordForm';
 import BankAccountForm from '@/components/settings/BankAccountForm';
 import AccountBalance from '@/components/settings/AccountBalance';
@@ -29,19 +29,19 @@ const ProfileSettings = () => (
         </div>
       </div>
     </div>
-    
+
     <div className="space-y-4 max-w-md">
       <div>
         <label className="block text-sm font-medium mb-2">Profile name</label>
         <input type="text" defaultValue="Kevin Heart" className="w-full px-3 py-2 border rounded-md" />
       </div>
-      
+
       <div>
         <label className="block text-sm font-medium mb-2">Username</label>
         <input type="text" defaultValue="@Kevin.heart" className="w-full px-3 py-2 border rounded-md bg-gray-50" disabled />
         <p className="text-xs text-gray-500 mt-1">Username can only be changed at 21-04-2024</p>
       </div>
-      
+
       <div>
         <label className="block text-sm font-medium mb-2">Status currently</label>
         <select className="w-full px-3 py-2 border rounded-md">
@@ -50,16 +50,16 @@ const ProfileSettings = () => (
           <option>Busy</option>
         </select>
       </div>
-      
+
       <div>
         <label className="block text-sm font-medium mb-2">About me</label>
-        <textarea 
-          className="w-full px-3 py-2 border rounded-md" 
+        <textarea
+          className="w-full px-3 py-2 border rounded-md"
           rows={3}
           defaultValue="Discuss only you work hour, unless you wanna discuss about music :)"
         />
       </div>
-      
+
       <button className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
         Save Changes
       </button>
@@ -118,17 +118,17 @@ export default function Settings() {
         return <UpdatePasswordForm />;
       case 'account-balance':
         return <AccountBalance />;
-    //   case 'notifications':
-    //     return <NotificationSettings />;
+      //   case 'notifications':
+      //     return <NotificationSettings />;
       default:
         return <ProfileSettings />;
     }
   };
 
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex min-h-[calc(100vh-4rem)] bg-gray-50">
       {/* Sidebar */}
-      <div className="w-64 bg-white border-r border-gray-200">
+      <div className="w-64 bg-white border-r border-gray-200 sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto">
         <div className="p-4 border-b border-gray-200 flex items-center justify-between">
           <h1 className="text-lg font-semibold">Settings</h1>
           <button className="p-1 hover:bg-gray-100 rounded">
@@ -142,11 +142,10 @@ export default function Settings() {
               <button
                 key={item.id}
                 onClick={() => setActiveTab(item.id)}
-                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-md text-left transition-colors ${
-                  activeTab === item.id
+                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-md text-left transition-colors ${activeTab === item.id
                     ? 'bg-gray-100 text-gray-900 font-medium'
                     : 'text-gray-600 hover:bg-gray-50'
-                }`}
+                  }`}
               >
                 <Icon className="w-5 h-5" />
                 <span>{item.label}</span>

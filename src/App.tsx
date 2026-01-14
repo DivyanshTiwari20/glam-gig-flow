@@ -34,6 +34,8 @@ import HelpCenterPage from "./pages/HelpCenterPage";
 import Refundpage from "./pages/Refundpage.tsx";
 import InvoicePage from "./pages/InvoicePage";
 import Settings from "./pages/settings";
+import AuthCallback from "./pages/AuthCallback";
+import ReelsPage from "./pages/Reels";
 // ... other page imports if any
 
 const queryClient = new QueryClient();
@@ -89,6 +91,7 @@ const App = () => {
 
                 {/* --- AUTH Routes WITHOUT Navbar --- */}
                 <Route path="/auth" element={<Auth />} />
+                <Route path="/auth/callback" element={<AuthCallback />} />
                 <Route path="/payment-status" element={<PaymentStatus />} />
                 <Route path="/public-profile/:userId" element={<PublicProfile />} />
 
@@ -96,6 +99,7 @@ const App = () => {
                 <Route element={<ProtectedRoute />}>
                   <Route element={<AppLayout />}>
                     <Route path="/app" element={<Dashboard />} />
+                    <Route path="/reels" element={<ReelsPage />} />
                     <Route path="/profile" element={<ProfilePage />} />
                     <Route path="/profile-editor" element={<ProfileEditor />} />
                     <Route path="/tasks" element={<TasksPage />} />
@@ -106,7 +110,7 @@ const App = () => {
                     <Route path="/settings" element={<Settings />} />
                   </Route>
                 </Route>
-                
+
                 {/* 404 Not Found Page */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

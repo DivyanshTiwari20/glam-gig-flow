@@ -27,13 +27,13 @@ const Navbar = () => {
       if (user) {
         setUserId(user.id);
         setEmail(user.email || "No email");
-        
+
         const { data, error } = await supabase
           .from("profiles")
           .select("full_name, avatar_url")
           .eq("id", user.id)
           .single();
-        
+
         if (!error && data) {
           setFullName(data.full_name || "User");
           setAvatarUrl(data.avatar_url || null);
@@ -92,6 +92,7 @@ const Navbar = () => {
 
   const navItems = [
     { label: "Home", path: "/app" },
+    { label: "Reels", path: "/reels" },
     { label: "Tasks", path: "/tasks" },
     { label: "Calendar", path: "/calendar" },
     { label: "Bookings", path: "/bookings" },
@@ -129,10 +130,10 @@ const Navbar = () => {
             </nav>
 
             {/* <ThemeToggle /> */}
-            
+
             {/* Notification Bell */}
             <NotificationBell />
-            
+
             <Button
               variant="ghost"
               size="sm"
@@ -147,14 +148,14 @@ const Navbar = () => {
               <Button
                 variant="ghost"
                 size="sm"
-                className="relative h-9 w-9 rounded-full p-0 hover:bg-primary/10"
+                className="relative h-10 w-10 rounded-full p-0 hover:ring-2 hover:ring-pink-300 transition-all"
                 onClick={() => setShowProfileMenu(!showProfileMenu)}
               >
-                <div className="h-8 w-8 rounded-full bg-gradient-primary flex items-center justify-center">
+                <div className="h-9 w-9 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center border-2 border-white shadow-lg overflow-hidden">
                   {avatarUrl ? (
-                    <img src={avatarUrl} alt="Avatar" className="h-8 w-8 rounded-full object-cover" />
+                    <img src={avatarUrl} alt="Avatar" className="h-9 w-9 rounded-full object-cover" />
                   ) : (
-                    <User className="h-4 w-4 text-white" />
+                    <User className="h-5 w-5 text-white" />
                   )}
                 </div>
               </Button>
@@ -164,7 +165,7 @@ const Navbar = () => {
                 <div className="absolute right-0 mt-2 w-56 bg-card border rounded-md shadow-lg z-50 animate-in fade-in-0 zoom-in-95">
                   <div className="p-3 border-b">
                     <div className="flex items-center gap-3">
-                      <div className="h-10 w-10 rounded-full bg-gradient-primary flex items-center justify-center overflow-hidden">
+                      <div className="h-10 w-10 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center overflow-hidden border-2 border-pink-200 shadow-md">
                         {avatarUrl ? (
                           <img src={avatarUrl} alt="Avatar" className="h-10 w-10 object-cover" />
                         ) : (
@@ -227,11 +228,10 @@ const Navbar = () => {
                   <Button
                     key={item.path}
                     variant="ghost"
-                    className={`w-full justify-start transition-colors duration-300 ${
-                      isActive 
-                        ? 'bg-primary/10 text-primary hover:bg-pink-400 hover:text-primary-foreground' 
-                        : 'hover:bg-pink-400 hover:text-primary-foreground'
-                    }`}
+                    className={`w-full justify-start transition-colors duration-300 ${isActive
+                      ? 'bg-primary/10 text-primary hover:bg-pink-400 hover:text-primary-foreground'
+                      : 'hover:bg-pink-400 hover:text-primary-foreground'
+                      }`}
                     onClick={() => {
                       navigate(item.path);
                       setShowMobileMenu(false);
