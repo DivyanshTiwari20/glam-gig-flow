@@ -9,8 +9,8 @@ export function Navbar() {
 
   // Your provided JSX code goes here
   return (
-      <motion.nav className="fixed top-0 left-0 right-0 z-50 mx-2 mt-2">
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-3 sm:px-4 py-1 bg-white/90 shadow-lg border-b border-white/20 rounded-2xl overflow-hidden">
+    <motion.nav className="fixed top-0 left-0 right-0 z-50 mx-2 mt-2">
+      <div className="max-w-6xl mx-auto flex items-center justify-between px-3 sm:px-4 py-1 bg-white/90 shadow-lg border-b border-white/20 rounded-2xl overflow-hidden">
         <motion.div className="flex items-center gap-2" whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
           <Link to="/" className="flex items-center gap-2">
             <img src="/logo-1.png" alt="GlamFlow Logo" className="h-14 w-auto object-contain" />
@@ -22,7 +22,7 @@ export function Navbar() {
           {[
             { label: 'About', href: '/about' },
             { label: 'Pricing', href: '/pricing' },
-            { label: 'Talk to Manno', href: 'https://kaya-eight.vercel.app/', external: true },
+            // { label: 'Talk to Manno', href: 'https://kaya-eight.vercel.app/', external: true },
             { label: 'Contact', href: '/contactpage' },
           ].map((item) => (
             <motion.a
@@ -30,7 +30,7 @@ export function Navbar() {
               href={item.href}
               className="relative font-medium transition-colors duration-300 hover:text-pink-600"
               whileHover={{ y: -2 }}
-              rel={item.external ? 'noopener noreferrer' : ''}
+            // rel={item.external ? 'noopener noreferrer' : ''}
             >
               {item.label}
               <motion.div
@@ -63,23 +63,23 @@ export function Navbar() {
         </div>
       </div>
 
-        {/* Mobile Menu (Animated dropdown) */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{
-            opacity: mobileMenuOpen ? 1 : 0,
-            y: mobileMenuOpen ? 0 : -20,
-            transitionEnd: {
-              display: mobileMenuOpen ? 'block' : 'none',
-            },
-          }}
-          transition={{ duration: 0.3 }}
-          className="md:hidden absolute top-full left-2 right-2 z-40 mt-2 px-3 pb-4 pt-2 bg-white/95 rounded-b-2xl shadow-lg shadow-pink-100/40 max-w-screen overflow-hidden"
-        >
+      {/* Mobile Menu (Animated dropdown) */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{
+          opacity: mobileMenuOpen ? 1 : 0,
+          y: mobileMenuOpen ? 0 : -20,
+          transitionEnd: {
+            display: mobileMenuOpen ? 'block' : 'none',
+          },
+        }}
+        transition={{ duration: 0.3 }}
+        className="md:hidden absolute top-full left-2 right-2 z-40 mt-2 px-3 pb-4 pt-2 bg-white/95 rounded-b-2xl shadow-lg shadow-pink-100/40 max-w-screen overflow-hidden"
+      >
         {[
           { label: 'About', href: '/about' },
           { label: 'Pricing', href: '/pricing' },
-          { label: 'Talk to Manno', href: 'https://kaya-eight.vercel.app/', external: true },
+          // { label: 'Talk to Manno', href: 'https://kaya-eight.vercel.app/', external: true },
           { label: 'Contact', href: '/contactpage' },
         ].map((item) => (
           <motion.a
@@ -89,7 +89,7 @@ export function Navbar() {
             className="block py-2 px-4 font-medium text-gray-700 hover:bg-pink-50 hover:text-pink-600 rounded-lg transition-colors"
             whileHover={{ x: 5 }}
             whileTap={{ opacity: 0.7 }}
-            rel={item.external ? 'noopener noreferrer' : ''}
+          // rel={item.external ? 'noopener noreferrer' : ''}
           >
             {item.label}
           </motion.a>

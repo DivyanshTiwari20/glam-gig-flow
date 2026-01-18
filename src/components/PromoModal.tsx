@@ -57,7 +57,7 @@ const PromoModal = ({ isOpen, onClose }) => {
                       }}
                       className="absolute inset-0 bg-white rounded-full blur-3xl"
                     />
-                    
+
                     {/* Main image/icon */}
                     <motion.div
                       initial={{ rotate: -10, scale: 0.8 }}
@@ -79,7 +79,7 @@ const PromoModal = ({ isOpen, onClose }) => {
                           <Sparkles className="w-16 h-16 sm:w-20 sm:h-20 md:w-32 md:h-32 text-pink-500" />
                         </motion.div>
                       </div>
-                      
+
                       {/* Floating badges */}
                       <motion.div
                         initial={{ opacity: 0, y: 10 }}
@@ -89,7 +89,7 @@ const PromoModal = ({ isOpen, onClose }) => {
                       >
                         100% FREE
                       </motion.div>
-                      
+
                       <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -117,13 +117,13 @@ const PromoModal = ({ isOpen, onClose }) => {
                     <div className="inline-block bg-gradient-to-r from-pink-500 to-purple-500 text-white text-xs font-bold px-3 py-1 sm:px-4 sm:py-1.5 rounded-full mb-3 sm:mb-4">
                       🎉 EXCLUSIVE LAUNCH OFFER
                     </div>
-                    
+
                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 leading-tight">
                       Get Pro Plan for <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600">FREE!</span>
                     </h2>
-                    
+
                     <p className="text-gray-600 text-sm sm:text-base md:text-lg mb-4 sm:mb-6 leading-relaxed">
-                      We're offering our <strong>Pro Plan</strong> absolutely free for the first <strong>100 users</strong>. This is a limited-time opportunity to unlock premium features at no cost!
+                      We're offering our <strong>Pro Plan</strong> absolutely free for the first <strong>30 days</strong>. This is a limited-time opportunity to unlock premium features at no cost!
                     </p>
 
                     {/* Features List */}
@@ -137,9 +137,9 @@ const PromoModal = ({ isOpen, onClose }) => {
                         <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5 sm:mt-0">
                           <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-600" />
                         </div>
-                        <span className="text-gray-700 text-sm sm:text-base">Profile recommendation & visibility boost</span>
+                        <span className="text-gray-700 text-sm sm:text-base">Profile recommendation & visibility</span>
                       </motion.div>
-                      
+
                       <motion.div
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -149,9 +149,9 @@ const PromoModal = ({ isOpen, onClose }) => {
                         <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5 sm:mt-0">
                           <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-600" />
                         </div>
-                        <span className="text-gray-700 text-sm sm:text-base">Advanced Business Analytics</span>
+                        <span className="text-gray-700 text-sm sm:text-base">Unlimited Client Booking</span>
                       </motion.div>
-                      
+
                       <motion.div
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -161,9 +161,9 @@ const PromoModal = ({ isOpen, onClose }) => {
                         <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5 sm:mt-0">
                           <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-600" />
                         </div>
-                        <span className="text-gray-700 text-sm sm:text-base">10 premium website templates</span>
+                        <span className="text-gray-700 text-sm sm:text-base">Permium looking presonal Website</span>
                       </motion.div>
-                      
+
                       <motion.div
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Star, Calendar, Users, X, Download, Menu, CreditCard, Mail, Phone, BarChart3, Shield, Clock, Image} from 'lucide-react';
+import { Star, Calendar, Users, X, Download, Menu, CreditCard, Mail, Phone, BarChart3, Shield, Clock, Image, Bell, Plus, Play, BookOpen, User, Smile, Pencil } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link, useNavigate } from 'react-router-dom';
 import PromoModal from '@/components/PromoModal';
@@ -47,24 +47,7 @@ const FloatingIcon = ({ children, className = "", delay = 0 }) => (
   </motion.div>
 );
 
-const AppointmentCard = ({ name, service, time, color }) => (
-  <motion.div
-    className="flex items-center justify-between p-3 rounded-lg bg-white/90 shadow-sm mb-3"
-    whileHover={{ scale: 1.02, y: -2, boxShadow: "0 10px 25px rgba(0,0,0,0.1)" }}
-    transition={{ type: "spring", stiffness: 400, damping: 15 }}
-  >
-    <div className="flex items-center gap-3">
-      <div className={`w-2 h-2 rounded-full ${color}`}></div>
-      <div>
-        <div className="font-medium text-gray-800 text-sm">{name}</div>
-        <div className="text-gray-500 text-xs">{service}</div>
-      </div>
-    </div>
-    <div className={`text-xs font-medium ${color.replace('bg-', 'text-')}`}>
-      {time}
-    </div>
-  </motion.div>
-);
+
 
 // MAIN LANDING PAGE COMPONENT
 export default function LandingPage() {
@@ -121,9 +104,9 @@ export default function LandingPage() {
       <motion.nav className="fixed top-0 left-0 right-0 z-50 mx-2 mt-2">
         <div className="max-w-6xl mx-auto flex items-center justify-between px-3 sm:px-4 py-1 bg-white/90 shadow-lg border-b border-white/20 rounded-2xl overflow-hidden">
           <motion.div className="flex items-center gap-2" whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
-          <Link to="/" className="flex items-center gap-2">
-        <img src="/logo-1.png" alt="GlamFlow Logo" className="h-14 w-auto object-contain" />
-      </Link>
+            <Link to="/" className="flex items-center gap-2">
+              <img src="/logo-1.png" alt="GlamFlow Logo" className="h-14 w-auto object-contain" />
+            </Link>
           </motion.div>
           {/* Desktop Nav Menu */}
           <div className="hidden md:flex items-center gap-8 text-gray-600">
@@ -131,7 +114,7 @@ export default function LandingPage() {
               { label: 'About', href: '/about' },
               // { label: 'Features', href: '#features' },
               { label: 'Pricing', href: '/pricing' },
-              { label: 'Talk to Manno', href: 'https://kaya-eight.vercel.app/', external: true },
+              // { label: 'Talk to Manno', href: 'https://kaya-eight.vercel.app/', external: true },
               { label: 'Contact', href: '/contactpage' },
             ].map((item) => (
               <motion.a
@@ -139,7 +122,7 @@ export default function LandingPage() {
                 href={item.href}
                 className="relative font-medium transition-colors duration-300 hover:text-pink-600"
                 whileHover={{ y: -2 }}
-                rel={item.external ? 'noopener noreferrer' : ''}
+              // rel={item.external ? 'noopener noreferrer' : ''}
               >
                 {item.label}
                 <motion.div
@@ -208,7 +191,7 @@ export default function LandingPage() {
         <AnimatedSection className="flex-1 lg:pr-12 text-center lg:text-left">
           <AnimatedItem className="flex items-center justify-center lg:justify-start gap-2 mb-8">
             <Star className="w-5 h-5 text-pink-500" />
-            <span className="text-rose-600 font-medium text-sm bg-rose-100 rounded-lg gap-3 px-2 py-1">Trusted by 10,000+ Beauty Professionals</span>
+            <span className="text-rose-600 font-medium text-sm bg-rose-100 rounded-lg gap-3 px-2 py-1">Empowering Freelancers to earn, grow and shine</span>
           </AnimatedItem>
           <AnimatedItem className="mb-8">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 leading-tight">Your Beauty</h1>
@@ -236,57 +219,154 @@ export default function LandingPage() {
         </AnimatedSection>
 
         <motion.div className="flex-1 flex justify-center lg:justify-end mt-12 lg:mt-0 relative" style={{ willChange: 'transform, opacity' }} variants={phoneVariants} initial="hidden" animate="visible">
-        <div className="relative">
-          <FloatingIcon className="-top-8 -left-8" delay={0.5}><div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg"><Calendar className="w-6 h-6 text-white" /></div></FloatingIcon>
-          <FloatingIcon className="top-20 -right-12" delay={1.5}><div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center shadow-lg"><Users className="w-5 h-5 text-white" /></div></FloatingIcon>
-          <FloatingIcon className="-bottom-4 -left-12" delay={2.5}><div className="w-14 h-14 bg-gradient-to-br from-pink-400 to-purple-500 rounded-2xl flex items-center justify-center shadow-lg"><Star className="w-7 h-7 text-white" /></div></FloatingIcon>
-          <motion.div className="relative w-72 sm:w-80 h-[550px] sm:h-[600px] bg-black rounded-[3rem] p-2 shadow-2xl">
-            <div className="w-full h-full bg-gradient-to-br from-pink-50 to-purple-50 rounded-[2.5rem] overflow-hidden relative">
-              {/* iPhone Status Bar */}
-              <motion.div className="px-6 pt-2 pb-1 flex justify-between items-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8, duration: 0.6 }}>
-                <span className="text-xs font-semibold text-gray-800">9:41</span>
-                <div className="w-20 h-6 bg-black rounded-full"></div>
-                <div className="flex items-center gap-1">
-                  <svg className="w-4 h-4 text-gray-800" fill="currentColor" viewBox="0 0 20 20"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
-                  {/* <svg className="w-5 h-5 text-gray-800" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M17 4v12c0 .6-.4 1-1 1h-1c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1h1c.6 0 1 .4 1 1zm-4 12V4c0-.6-.4-1-1-1h-2a1 1 0 00-1 1v3.5L7.9 6.4a1 1 0 00-1.4 0l-.7.7a1 1 0 000 1.4L7.5 10H4a1 1 0 00-1 1v1a1 1 0 001 1h3.5l-1.7 1.7a1 1 0 000 1.4l.7.7a1 1 0 001.4 0L9 15.5V19a1 1 0 001 1h2a1 1 0 001-1z" clipRule="evenodd"/></svg> */}
-                  <div className="w-6 h-3 border-2 border-gray-800 rounded-sm relative"><div className="absolute right-0 top-1/2 -translate-y-1/2 w-0.5 h-1.5 bg-gray-800 -mr-1"></div><div className="h-full w-5 bg-gray-800 rounded-sm"></div></div>
+          <div className="relative">
+            <FloatingIcon className="-top-8 -left-8" delay={0.5}><div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg"><Calendar className="w-6 h-6 text-white" /></div></FloatingIcon>
+            <FloatingIcon className="top-20 -right-12" delay={1.5}><div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center shadow-lg"><Users className="w-5 h-5 text-white" /></div></FloatingIcon>
+            <FloatingIcon className="-bottom-4 -left-12" delay={2.5}><div className="w-14 h-14 bg-gradient-to-br from-pink-400 to-purple-500 rounded-2xl flex items-center justify-center shadow-lg"><Star className="w-7 h-7 text-white" /></div></FloatingIcon>
+            <motion.div className="relative w-72 sm:w-80 h-[600px] sm:h-[640px] bg-black rounded-[3rem] p-2 shadow-2xl">
+              <div className="w-full h-full bg-[#f8f9fa] rounded-[2.5rem] overflow-hidden relative flex flex-col">
+                {/* iPhone Status Bar & Dynamic Island */}
+                <div className="px-6 pt-4 pb-2 flex justify-between items-center relative z-20">
+                  <span className="text-[10px] font-bold text-gray-900">09:11</span>
+                  <div className="absolute left-1/2 -translate-x-1/2 top-3 w-20 h-6 bg-black rounded-full flex items-center justify-center">
+                    <div className="w-8 h-1 bg-gray-800/30 rounded-full"></div>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <div className="flex gap-0.5">
+                      <div className="w-0.5 h-1.5 bg-gray-900 rounded-full"></div>
+                      <div className="w-0.5 h-2 bg-gray-900 rounded-full"></div>
+                      <div className="w-0.5 h-2.5 bg-gray-400 rounded-full"></div>
+                      <div className="w-0.5 h-3 bg-gray-400 rounded-full"></div>
+                    </div>
+                    <svg className="w-3 h-3 text-gray-900" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21l-12-18h24z" /></svg>
+                    <div className="w-5 h-2.5 border border-gray-400 rounded-[2px] p-[1px] flex items-center"><div className="w-full h-full bg-gray-900 rounded-[1px]"></div></div>
+                  </div>
                 </div>
-              </motion.div>
-              
-              <div className="p-6 pt-3">
-                <motion.div className="mb-6" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.2, duration: 0.6 }}>
-                  <h2 className="text-xl font-bold text-gray-800 mb-1 my-6">Good morning, Divya!</h2>
-                  <p className="text-gray-600 text-sm flex items-center gap-2">You have 3 appointments today<div className="w-3 h-3 bg-pink-500 rounded-full"></div></p>
-                </motion.div>
 
-                <motion.div className="flex gap-4 mb-6" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.3, duration: 0.6 }}>
-                  <div className="flex-1 bg-white p-4 rounded-xl shadow-md">
-                    <p className="text-2xl font-bold text-gray-800">₹2,450</p>
-                    <p className="text-gray-500 text-sm">This Month</p>
+                {/* Header */}
+                <div className="px-6 py-2 flex justify-between items-center relative">
+                  <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-400 overflow-hidden border border-gray-300">
+                    <img src="/landing-page-logo-img.png" alt="GlamFlow Logo" className="h-14 w-auto object-contain" />
                   </div>
-                  <div className="flex-1 bg-white p-4 rounded-xl shadow-md">
-                    <p className="text-2xl font-bold text-gray-800">281</p>
-                    <p className="text-gray-500 text-sm">Appointments</p>
+                  <h2 className="text-lg font-bold text-gray-900 absolute left-1/2 -translate-x-1/2">Home</h2>
+                  <Bell className="w-5 h-5 text-pink-500" />
+                </div>
+
+                <div className="flex-1 overflow-hidden px-4 pb-4 no-scrollbar">
+                  {/* Stats Grid */}
+                  <div className="grid grid-cols-2 gap-3 mb-4">
+                    <div className="bg-[#FFE58F] p-3 rounded-2xl relative overflow-hidden h-32 flex flex-col justify-between shadow-sm">
+                      <div className="flex justify-end">
+                        <Calendar className="w-5 h-5 text-gray-900 opacity-80" />
+                      </div>
+                      <div>
+                        <p className="text-[11px] font-bold text-gray-800 leading-tight">Appointment<br />Today</p>
+                        <p className="text-2xl font-black text-gray-900 mt-1">3</p>
+                        <p className="text-[8px] text-gray-700 mt-0.5 font-medium">2 confirmed, 1 pending</p>
+                      </div>
+                    </div>
+                    <div className="bg-[#FFC1CC] p-3 rounded-2xl relative overflow-hidden h-32 flex flex-col justify-between shadow-sm">
+                      <div className="flex justify-end">
+                        <Users className="w-5 h-5 text-gray-900 opacity-80" />
+                      </div>
+                      <div>
+                        <p className="text-[11px] font-bold text-gray-800 leading-tight">Recent<br />Bookings</p>
+                        <p className="text-2xl font-black text-gray-900 mt-1">8</p>
+                        <p className="text-[8px] text-gray-700 mt-0.5 font-medium">Bookings in last 24 hours</p>
+                      </div>
+                    </div>
+                    <div className="bg-[#BAE7FF] p-3 rounded-2xl relative overflow-hidden h-32 flex flex-col justify-between shadow-sm">
+                      <div className="flex justify-end">
+                        <Pencil className="w-5 h-5 text-gray-900 opacity-80" />
+                      </div>
+                      <div>
+                        <p className="text-[11px] font-bold text-gray-800 leading-tight">Tasks<br />Pending</p>
+                        <p className="text-2xl font-black text-gray-900 mt-1">1</p>
+                        <p className="text-[8px] text-gray-700 mt-0.5 font-medium">0 high priority items</p>
+                      </div>
+                    </div>
+                    <div className="bg-[#FFE58F] p-3 rounded-2xl relative overflow-hidden h-32 flex flex-col justify-between shadow-sm">
+                      <div className="flex justify-end">
+                        <Smile className="w-5 h-5 text-gray-900 opacity-80" />
+                      </div>
+                      <div>
+                        <p className="text-[11px] font-bold text-gray-800 leading-tight">Happy<br />Earning!</p>
+                        <p className="text-2xl font-black text-gray-900 mt-1">₹89,500</p>
+                        <p className="text-[8px] text-gray-700 mt-0.5 font-medium">Earnings in last 30 days</p>
+                      </div>
+                    </div>
                   </div>
-                </motion.div>
-                <motion.h3 className="text-md font-semibold text-gray-700 mb-4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.35, duration: 0.6 }}>Today's Schedule</motion.h3>
-                
-                <div className="space-y-3">
-                  <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.5, duration: 0.6 }}>
-                    <AppointmentCard name="Priya" service="Bridal Makeup artist" time="10:00 AM" color="bg-pink-500" />
-                  </motion.div>
-                  <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.7, duration: 0.6 }}>
-                    <AppointmentCard name="Jaya" service="Photoshoot artist" time="2:00 PM" color="bg-purple-500" />
-                  </motion.div>
-                  <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.9, duration: 0.6 }}>
-                    <AppointmentCard name="Ruhi" service="Makup artist" time="5:30 PM" color="bg-pink-400" />
-                  </motion.div>
+
+                  <div className="mb-4">
+                    <div className="flex justify-between items-center mb-2">
+                      <h3 className="text-sm font-bold text-gray-900">Today's Appointments</h3>
+                      {/* <span className="text-[10px] font-bold text-pink-500">View all</span> */}
+                    </div>
+                    <div className="space-y-2">
+                      <div className="bg-white rounded-xl p-3 shadow-sm border border-gray-100 flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <div className="w-8 h-8 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 font-bold text-xs">P</div>
+                          <div>
+                            <p className="text-[11px] font-bold text-gray-900">Priya</p>
+                            <p className="text-[9px] text-gray-500">Nail extension</p>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-[10px] font-bold text-pink-500">10:00 AM</p>
+                          <p className="text-[8px] text-gray-400">Confirmed</p>
+                        </div>
+                      </div>
+                      <div className="bg-white rounded-xl p-3 shadow-sm border border-gray-100 flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <div className="w-8 h-8 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 font-bold text-xs">A</div>
+                          <div>
+                            <p className="text-[11px] font-bold text-gray-900">Ankita</p>
+                            <p className="text-[9px] text-gray-500">Bridal Makeup</p>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-[10px] font-bold text-pink-500">04:00 PM</p>
+                          <p className="text-[8px] text-gray-400">Confirmed</p>
+                        </div>
+                      </div>
+                      <button className="w-full border-2 border-dashed border-pink-200 rounded-xl py-2 flex items-center justify-center gap-2 text-pink-400 text-xs font-bold hover:bg-pink-50 transition-colors">
+                        <Plus className="w-3 h-3" />
+                        Add Appointment
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom Navigation */}
+                <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-100 px-4 py-2 flex justify-between items-center rounded-b-[2.5rem] z-20">
+                  <div className="flex flex-col items-center gap-0.5">
+                    <div className="p-1 rounded-lg">
+                      <svg className="w-5 h-5 text-pink-500" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" /></svg>
+                    </div>
+                    <span className="text-[10px] font-bold text-pink-500">Home</span>
+                  </div>
+                  <div className="flex flex-col items-center gap-0.5 opacity-40">
+                    <Calendar className="w-5 h-5" />
+                    <span className="text-[10px] font-bold">Calendar</span>
+                  </div>
+                  <div className="flex flex-col items-center -mt-8">
+                    <div className="w-12 h-12 bg-[#1e293b] rounded-full flex items-center justify-center shadow-lg border-4 border-white">
+                      <Plus className="w-6 h-6 text-white" />
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-center gap-0.5 opacity-40">
+                    <Play className="w-5 h-5" />
+                    <span className="text-[10px] font-bold">Reels</span>
+                  </div>
+                  <div className="flex flex-col items-center gap-0.5 opacity-40">
+                    <BookOpen className="w-5 h-5" />
+                    <span className="text-[10px] font-bold">Booking</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          </motion.div>
-        </div>
-      </motion.div>
+            </motion.div>
+          </div>
+        </motion.div>
       </div>
       {/* About Section (Why GlamFlow?) */}
       <AnimatedSection className="py-20 px-2 sm:px-4 bg-white" id="about">
@@ -387,82 +467,82 @@ export default function LandingPage() {
 
       {/* Features Section - Restored */}
       {/* Features Section - Restored & Updated */}
-<AnimatedSection className="bg-gray-50 py-20 px-4 md:px-8 lg:px-16" id="features">
-  <div className="max-w-7xl mx-auto">
-    <AnimatedItem className="text-center mb-16">
-      <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Everything You Need to</h2>
-      <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-rose-500 to-pink-500 bg-clip-text text-transparent mb-6">Grow Your Beauty Business</h2>
-      <p className="text-lg text-gray-600 max-w-2xl mx-auto">GlamFlow combines powerful business tools with an intuitive interface designed specifically for beauty professionals.</p>
-    </AnimatedItem>
+      <AnimatedSection className="bg-gray-50 py-20 px-4 md:px-8 lg:px-16" id="features">
+        <div className="max-w-7xl mx-auto">
+          <AnimatedItem className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Everything You Need to</h2>
+            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-rose-500 to-pink-500 bg-clip-text text-transparent mb-6">Grow Your Beauty Business</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">GlamFlow combines powerful business tools with an intuitive interface designed specifically for beauty professionals.</p>
+          </AnimatedItem>
 
-    {/* UPDATE: The grid is now dynamically generated from the `featuresData` array */}
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      {[
-        {
-          title: "Smart Scheduling",
-          description: "Automated booking system with calendar sync, availability management, and client reminders.",
-          icon: <Calendar className="w-8 h-8 text-white" />,
-          color: "from-pink-500 to-purple-600"
-        },
-        {
-          title: "Client Management",
-          description: "Comprehensive client profiles with service history, preferences, and communication tools.",
-          icon: <Users className="w-8 h-8 text-white" />,
-          color: "from-pink-500 to-purple-600"
-        },
-        {
-          title: "Secure Payments",
-          description: "Instant payment processing with multiple payment methods and automatic invoicing.",
-          icon: <CreditCard className="w-8 h-8 text-white" />,
-          color: "from-purple-500 to-blue-600"
-        },
-        {
-          title: "Portfolio Showcase",
-          description: "Beautiful gallery to display your work with before/after comparisons and client testimonials.",
-          icon: <Image className="w-8 h-8 text-white" />,
-          color: "from-blue-500 to-cyan-600"
-        },
-        {
-          title: "Business Analytics",
-          description: "Detailed insights into your earnings, popular services, and client retention metrics.",
-          icon: <BarChart3 className="w-8 h-8 text-white" />,
-          color: "from-indigo-500 to-purple-600"
-        },
-        {
-          title: "Professional Protection",
-          description: "Liability coverage, contract templates, and dispute resolution support for peace of mind.",
-          icon: <Shield className="w-8 h-8 text-white" />,
-          color: "from-green-500 to-teal-600"
-        },
-        {
-          title: "Time Tracking",
-          description: "Accurate service timing with automatic break calculations and overtime alerts.",
-          icon: <Clock className="w-8 h-8 text-white" />,
-          color: "from-yellow-500 to-orange-600"
-        },
-        {
-          title: "Client Reviews",
-          description: "Integrated review system to build your reputation and attract new clients organically.",
-          icon: <Star className="w-8 h-8 text-white" />,
-          color: "from-red-500 to-pink-600"
-        },
-      ].map((feature) => (
-        <AnimatedItem key={feature.title}>
-          <motion.div 
-            className="group bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-pink-200 h-full flex flex-col" 
-            whileHover={{ y: -10, scale: 1.02 }}
-          >
-            <div className={`w-16 h-16 bg-gradient-to-br ${feature.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-              {feature.icon}
-            </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-4">{feature.title}</h3>
-            <p className="text-gray-600 leading-relaxed flex-grow">{feature.description}</p>
-          </motion.div>
-        </AnimatedItem>
-      ))}
-    </div>
-  </div>
-</AnimatedSection>
+          {/* UPDATE: The grid is now dynamically generated from the `featuresData` array */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                title: "Smart Scheduling",
+                description: "Automated booking system with calendar sync, availability management, and client reminders.",
+                icon: <Calendar className="w-8 h-8 text-white" />,
+                color: "from-pink-500 to-purple-600"
+              },
+              {
+                title: "Client Management",
+                description: "Comprehensive client profiles with service history, preferences, and communication tools.",
+                icon: <Users className="w-8 h-8 text-white" />,
+                color: "from-pink-500 to-purple-600"
+              },
+              {
+                title: "Secure Payments",
+                description: "Instant payment processing with multiple payment methods and automatic invoicing.",
+                icon: <CreditCard className="w-8 h-8 text-white" />,
+                color: "from-purple-500 to-blue-600"
+              },
+              {
+                title: "Portfolio Showcase",
+                description: "Beautiful gallery to display your work with before/after comparisons and client testimonials.",
+                icon: <Image className="w-8 h-8 text-white" />,
+                color: "from-blue-500 to-cyan-600"
+              },
+              {
+                title: "Business Analytics",
+                description: "Detailed insights into your earnings, popular services, and client retention metrics.",
+                icon: <BarChart3 className="w-8 h-8 text-white" />,
+                color: "from-indigo-500 to-purple-600"
+              },
+              {
+                title: "Professional Protection",
+                description: "Liability coverage, contract templates, and dispute resolution support for peace of mind.",
+                icon: <Shield className="w-8 h-8 text-white" />,
+                color: "from-green-500 to-teal-600"
+              },
+              {
+                title: "Time Tracking",
+                description: "Accurate service timing with automatic break calculations and overtime alerts.",
+                icon: <Clock className="w-8 h-8 text-white" />,
+                color: "from-yellow-500 to-orange-600"
+              },
+              {
+                title: "Client Reviews",
+                description: "Integrated review system to build your reputation and attract new clients organically.",
+                icon: <Star className="w-8 h-8 text-white" />,
+                color: "from-red-500 to-pink-600"
+              },
+            ].map((feature) => (
+              <AnimatedItem key={feature.title}>
+                <motion.div
+                  className="group bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-pink-200 h-full flex flex-col"
+                  whileHover={{ y: -10, scale: 1.02 }}
+                >
+                  <div className={`w-16 h-16 bg-gradient-to-br ${feature.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">{feature.title}</h3>
+                  <p className="text-gray-600 leading-relaxed flex-grow">{feature.description}</p>
+                </motion.div>
+              </AnimatedItem>
+            ))}
+          </div>
+        </div>
+      </AnimatedSection>
       {/* Pricing Section */}
       {/* Pricing Section */}
       <AnimatedSection className="py-20 px-2 sm:px-4 bg-white" id="pricing">
@@ -489,6 +569,10 @@ export default function LandingPage() {
                 <ul className="mt-8 space-y-4 text-gray-600 flex-grow">
                   <li className="flex items-center gap-3">
                     <Star className="w-5 h-5 text-pink-500" />
+                    <span>One Client booking</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <Star className="w-5 h-5 text-pink-500" />
                     <span>Unlimited calendar</span>
                   </li>
                   <li className="flex items-center gap-3">
@@ -497,19 +581,15 @@ export default function LandingPage() {
                   </li>
                   <li className="flex items-center gap-3">
                     <Star className="w-5 h-5 text-pink-500" />
-                    <span>Client bookings</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <Star className="w-5 h-5 text-pink-500" />
-                    <span>Portfolio website 1 template</span>
+                    <span>Personal website</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <Star className="w-5 h-5 text-pink-500" />
                     <span>Community Support and email only</span>
                   </li>
                 </ul>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="w-full mt-8 rounded-full py-6 text-lg font-medium border-2 border-pink-200 hover:border-pink-300 text-pink-600 hover:bg-pink-50 transition-all duration-300"
                   onClick={handlePlanClick}
                 >
@@ -523,9 +603,9 @@ export default function LandingPage() {
               <div className="bg-gray-900 text-white rounded-3xl p-8 shadow-2xl border-4 border-pink-500 h-full flex flex-col relative overflow-hidden">
                 <div className="absolute top-0 right-0 bg-pink-500 text-white text-xs font-bold px-4 py-1 rounded-bl-lg">MOST POPULAR</div>
                 <h3 className="text-2xl font-bold text-white">Growth</h3>
-                <p className="text-gray-400 mt-2">Perfect for small salons</p>
+                <p className="text-gray-400 mt-2">Perfect for Growing Freelancers</p>
                 <div className="mt-6">
-                  <span className="text-5xl font-bold text-white">₹999</span>
+                  <span className="text-5xl font-bold text-white">₹499</span>
                   <span className="text-gray-400">/month</span>
                 </div>
                 <ul className="mt-8 space-y-4 text-gray-300 flex-grow">
@@ -539,18 +619,18 @@ export default function LandingPage() {
                   </li>
                   <li className="flex items-center gap-3">
                     <Star className="w-5 h-5 text-pink-400" />
-                    <span>Unlimited client bookings</span>
+                    <span>Upto 5 clients bookings</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <Star className="w-5 h-5 text-pink-400" />
-                    <span>Portfolio website 5 template.</span>
+                    <span>Personal website</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <Star className="w-5 h-5 text-pink-400" />
                     <span>Priority Support email within 24 hours.</span>
                   </li>
                 </ul>
-                <Button 
+                <Button
                   className="w-full mt-8 bg-gradient-to-r from-rose-500 to-pink-500 hover:from-pink-600 hover:to-purple-700 text-white rounded-full py-6 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
                   onClick={handlePlanClick}
                 >
@@ -563,15 +643,15 @@ export default function LandingPage() {
             <AnimatedItem>
               <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-200 h-full flex flex-col">
                 <h3 className="text-2xl font-bold text-gray-900">Pro</h3>
-                <p className="text-gray-500 mt-2">For large salons & chains</p>
+                <p className="text-gray-500 mt-2">For Professional Freelancers</p>
                 <div className="mt-6">
-                  <span className="text-5xl font-bold text-gray-900">₹1,999</span>
+                  <span className="text-5xl font-bold text-gray-900">₹999</span>
                   <span className="text-gray-500">/month</span>
                 </div>
                 <ul className="mt-8 space-y-4 text-gray-600 flex-grow">
                   <li className="flex items-center gap-3">
                     <Star className="w-5 h-5 text-pink-500" />
-                    <span>All Pro features </span>
+                    <span>All Growth features </span>
                   </li>
                   <li className="flex items-center gap-3">
                     <Star className="w-5 h-5 text-pink-500" />
@@ -579,19 +659,19 @@ export default function LandingPage() {
                   </li>
                   <li className="flex items-center gap-3">
                     <Star className="w-5 h-5 text-pink-500" />
-                    <span>Advamce Business Analytics</span>
+                    <span>Unlimited clients bookings</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <Star className="w-5 h-5 text-pink-500" />
-                    <span>Personal website with 10 templates</span>
+                    <span>Personal website</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <Star className="w-5 h-5 text-pink-500" />
                     <span>24/7 chat, phone support</span>
                   </li>
                 </ul>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="w-full mt-8 rounded-full py-6 text-lg font-medium border-2 border-pink-200 hover:border-pink-300 text-pink-600 hover:bg-pink-50 transition-all duration-300"
                   onClick={handlePlanClick}
                 >
@@ -611,8 +691,8 @@ export default function LandingPage() {
 
       {/* Promo Modal */}
       <PromoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-      
-    
+
+
       {/* FAQ Section */}
       <AnimatedSection className="py-20 px-2 sm:px-4 bg-gray-50" id="faq">
         <div className="w-full max-w-full lg:max-w-4xl mx-auto">
@@ -689,96 +769,96 @@ export default function LandingPage() {
         </div>
       </AnimatedSection>
       {/* Contact Section */}
-<AnimatedSection className="py-20 px-2 sm:px-4 bg-white" id="contact">
-  <div className="w-full max-w-full lg:max-w-7xl mx-auto">
-    <AnimatedItem className="text-center mb-16">
-      <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-        Get In Touch
-      </h2>
-      <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-        Have questions or want to learn more? We'd love to hear from you.
-      </p>
-    </AnimatedItem>
+      <AnimatedSection className="py-20 px-2 sm:px-4 bg-white" id="contact">
+        <div className="w-full max-w-full lg:max-w-7xl mx-auto">
+          <AnimatedItem className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Get In Touch
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Have questions or want to learn more? We'd love to hear from you.
+            </p>
+          </AnimatedItem>
 
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-      
-      {/* Left Column: Contact Info */}
-      <AnimatedItem className="space-y-8">
-        <div>
-          <h3 className="text-2xl font-semibold text-gray-800 mb-4">Contact Details</h3>
-          <p className="text-gray-600 mb-6">
-            Fill out the form, or if you prefer, you can reach us through the channels below. Our team will get back to you within 24 hours.
-          </p>
-          <div className="space-y-4">
-            <a href="askusstudio@gmail.com" className="flex items-center gap-4 group">
-              <div className="w-12 h-12 flex items-center justify-center rounded-full bg-pink-100 text-pink-600 group-hover:bg-pink-500 group-hover:text-white transition-colors">
-                <Mail className="w-6 h-6" />
-              </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+            {/* Left Column: Contact Info */}
+            <AnimatedItem className="space-y-8">
               <div>
-                <span className="font-semibold text-gray-800">Email Us</span>
-                <p className="text-gray-600 group-hover:text-pink-600 transition-colors">askusstudio@gmail.com</p>
-              </div>
-            </a>
-            <div className="flex items-center gap-4 group">
-              <div className="w-12 h-12 flex items-center justify-center rounded-full bg-pink-100 text-pink-600">
-                <Phone className="w-6 h-6" />
-              </div>
-              <div>
-                <span className="font-semibold text-gray-800">Call Us</span>
-                <p className="text-gray-600">+91 8009227002
+                <h3 className="text-2xl font-semibold text-gray-800 mb-4">Contact Details</h3>
+                <p className="text-gray-600 mb-6">
+                  Fill out the form, or if you prefer, you can reach us through the channels below. Our team will get back to you within 24 hours.
                 </p>
+                <div className="space-y-4">
+                  <a href="askusstudio@gmail.com" className="flex items-center gap-4 group">
+                    <div className="w-12 h-12 flex items-center justify-center rounded-full bg-pink-100 text-pink-600 group-hover:bg-pink-500 group-hover:text-white transition-colors">
+                      <Mail className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <span className="font-semibold text-gray-800">Email Us</span>
+                      <p className="text-gray-600 group-hover:text-pink-600 transition-colors">askusstudio@gmail.com</p>
+                    </div>
+                  </a>
+                  <div className="flex items-center gap-4 group">
+                    <div className="w-12 h-12 flex items-center justify-center rounded-full bg-pink-100 text-pink-600">
+                      <Phone className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <span className="font-semibold text-gray-800">Call Us</span>
+                      <p className="text-gray-600">+91 8009227002
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
+            </AnimatedItem>
+
+            {/* Right Column: Contact Form */}
+            <AnimatedItem>
+              <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
+                <form action="#" method="POST" className="space-y-6">
+                  <div>
+                    <label htmlFor="name" className="font-medium text-gray-700 sr-only">Your Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      id="name"
+                      placeholder="Your Name"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-shadow"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="font-medium text-gray-700 sr-only">Your Email</label>
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      placeholder="Your Email"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-shadow"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="message" className="font-medium text-gray-700 sr-only">Your Message</label>
+                    <textarea
+                      name="message"
+                      id="message"
+                      rows={5}
+                      placeholder="Your Message"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-shadow"
+                    ></textarea>
+                  </div>
+                  <div>
+                    <Button type="submit" className="w-full bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-700 text-white rounded-full py-6 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300">
+                      Send Message
+                    </Button>
+                  </div>
+                </form>
+              </div>
+            </AnimatedItem>
+
           </div>
         </div>
-      </AnimatedItem>
-
-      {/* Right Column: Contact Form */}
-      <AnimatedItem>
-        <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
-            <form action="#" method="POST" className="space-y-6">
-                <div>
-                    <label htmlFor="name" className="font-medium text-gray-700 sr-only">Your Name</label>
-                    <input 
-                        type="text" 
-                        name="name" 
-                        id="name"
-                        placeholder="Your Name"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-shadow"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="email" className="font-medium text-gray-700 sr-only">Your Email</label>
-                    <input 
-                        type="email" 
-                        name="email" 
-                        id="email"
-                        placeholder="Your Email"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-shadow"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="message" className="font-medium text-gray-700 sr-only">Your Message</label>
-                    <textarea 
-                        name="message" 
-                        id="message"
-                        rows={5}
-                        placeholder="Your Message"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-shadow"
-                    ></textarea>
-                </div>
-                <div>
-                    <Button type="submit" className="w-full bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-700 text-white rounded-full py-6 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300">
-                        Send Message
-                    </Button>
-                </div>
-            </form>
-        </div>
-      </AnimatedItem>
-
-    </div>
-  </div>
-</AnimatedSection>
+      </AnimatedSection>
       {/* Call to Action Section */}
       <AnimatedSection className="py-20 px-2 sm:px-4 md:px-8 lg:px-16 bg-pink-500 text-white text-center">
         <div className="w-full max-w-full lg:max-w-4xl mx-auto">
@@ -810,7 +890,7 @@ export default function LandingPage() {
         </div>
       </AnimatedSection>
 
-      
+
     </div>
   );
 }
