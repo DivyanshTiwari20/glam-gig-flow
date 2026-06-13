@@ -13,7 +13,7 @@ export function Navbar() {
       <div className="max-w-6xl mx-auto flex items-center justify-between px-3 sm:px-4 py-1 bg-white/90 shadow-lg border-b border-white/20 rounded-2xl overflow-hidden">
         <motion.div className="flex items-center gap-2" whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
           <Link to="/" className="flex items-center gap-2">
-            <img src="/logo-1.png" alt="GlamFlow Logo" className="h-14 w-auto object-contain" />
+            <img src="/glamflow-logo.jpeg" alt="GlamFlow Logo" className="h-12 w-12 object-contain rounded-xl" />
           </Link>
         </motion.div>
 

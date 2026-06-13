@@ -5,7 +5,8 @@ import { Footer } from './website/Footer';
 export function Layout() {
   const location = useLocation();
 
-  const pathsToHideLayout = [
+  const exactHidePaths = ['/'];
+  const prefixHidePaths = [
     '/booking',
     '/tasks',
     '/app',
@@ -16,7 +17,9 @@ export function Layout() {
     '/analytics',
   ];
 
-  const showLayoutElements = !pathsToHideLayout.some(path => location.pathname.startsWith(path));
+  const showLayoutElements =
+    !exactHidePaths.includes(location.pathname) &&
+    !prefixHidePaths.some(path => location.pathname.startsWith(path));
 
   return (
     <>

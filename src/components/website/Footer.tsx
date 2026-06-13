@@ -35,10 +35,9 @@ export function Footer() {
             <motion.div variants={itemVariants} className="md:col-span-2 lg:col-span-2">
               <div className="flex items-center gap-2">
                 <img
-                  src="/logo-1.png"
+                  src="/glamflow-logo.jpeg"
                   alt="GlamFlow Logo"
-                  className="w-32 h-25 rounded-lg"
-             
+                  className="w-12 h-12 rounded-xl object-contain"
                 />
                 {/* <span className="text-xl font-bold text-white">GlamFlow</span> */}
               </div>
